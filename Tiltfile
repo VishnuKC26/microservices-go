@@ -37,7 +37,11 @@ docker_build_with_restart(
 )
 
 k8s_yaml('./infra/development/k8s/api-gateway-deployment.yaml')
+<<<<<<< HEAD
 k8s_resource('api-gateway', port_forwards='9090:8001',
+=======
+k8s_resource('api-gateway', port_forwards='9090;8001',
+>>>>>>> 08c3c9d8cc414a833d257265fba09e2d55bdeaee
              resource_deps=['api-gateway-compile'], labels="services")
 ### End of API Gateway ###
 ### Trip Service ###

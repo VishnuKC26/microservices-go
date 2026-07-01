@@ -1,3 +1,4 @@
+
 package domain
 
 import (
@@ -13,3 +14,4 @@ type RideFareModel struct {
 	TotalPriceInCents float64
 	ExpiresAt         time.Time
 }
+
