@@ -40,7 +40,7 @@ func (h *gRPCHandler) PreviewTrip(ctx context.Context, req *pb.PreviewTripReques
 			Latitude:  destination.Latitude,
 			Longitude: destination.Longitude,
 		}
-	t, err := h.service.GetRoute(ctx, pickupCoord, destinationCoord)
+	t, err := h.service.GetRoute(ctx, pickupCoord, destinationCoord,true)
 	if err != nil {
 		log.Println(err)
 		return nil,status.Errorf(codes.Internal,"failed to get route:%v",err)
@@ -50,4 +50,7 @@ func (h *gRPCHandler) PreviewTrip(ctx context.Context, req *pb.PreviewTripReques
 		RideFares: []*pb.RideFare{},
 		
 	}, nil
+}
+func (h *gRPCHandler) CreateTrip(ctx context.Context, req *pb.CreateTripRequest) (*pb.CreateTripResponse, error) {
+	return nil,status.Errorf(codes.Unimplemented,"method createtrip not implemented")
 }

@@ -1,7 +1,8 @@
 package main
 
-import ("ride-sharing/shared/types"
-pb "ride-sharing/shared/proto/trip"
+import (
+	pb "ride-sharing/shared/proto/trip"
+	"ride-sharing/shared/types"
 )
 
 type previewTripRequest struct {
@@ -21,5 +22,17 @@ func (p *previewTripRequest) toProto() *pb.PreviewTripRequest {
 			Latitude:  p.Destination.Latitude,
 			Longitude: p.Destination.Longitude,
 		},
+	}
+}
+
+type startTripRequest struct {
+	RideFareID string `json:"rideFareID"`
+	UserID     string `json:"userID"`
+}
+
+func (c *startTripRequest) toProto() *pb.CreateTripRequest {
+	return &pb.CreateTripRequest{
+		RideFareID: c.RideFareID,
+		UserID:     c.UserID,
 	}
 }

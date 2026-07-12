@@ -16,10 +16,12 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("POST /trip/preview", enableCORS(handleTripPreview))
+	mux.HandleFunc("POST /trip/start", enableCORS(handleTripStart))
 	server := &http.Server{
 		Addr:    httpAddr,
 		Handler: mux,
 	}
+	
 	mux.HandleFunc("/ws/riders", handleRidersWebSocket)
 	mux.HandleFunc("/ws/drivers", handleDriversWebSocket)
 	if err := server.ListenAndServe(); err != nil {
